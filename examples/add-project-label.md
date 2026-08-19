@@ -38,7 +38,16 @@ You answer as briefly as you like:
 
 Finding facts is not your job. While you answer, a scout checks whether existing rows deserialize without a migration and reports that they do. Only questions that depended on that answer waited.
 
-`domain-modeling` writes the one durable decision into the glossary. **Project label**: a single optional free-text string on a task, absence being the only way to say "no label".
+`domain-modeling` writes the one durable decision into the project glossary, which is a `CONTEXT.md` at the repository root defining the terms this codebase uses. A new entry appears under its `## Language` heading:
+
+```md
+**Project label**:
+A single optional free-text string on a task. Absence is the only way to say
+"no label"; an empty string is never stored.
+_Avoid_: Tag, category, group
+```
+
+That file is read before exploring, so the next person to touch tasks finds the term already defined instead of inventing "tag" next to it. Decisions with more weight than a definition go to `docs/adr/` as a numbered record instead.
 
 ## 2. Specify
 

@@ -17,6 +17,16 @@ Frame → Specify → Slice → Build → Review → Hand off
 5. **Review** the result with your environment’s review tooling.
 6. **Hand off** what the next person or session needs, using [handoff](skills/handoff/SKILL.md).
 
+Stage 1 is a decision, not a cost you always pay. `plan-change` picks one of three routes and tells you which it took:
+
+| Route | When | What runs |
+| --- | --- | --- |
+| Settled and small | Unambiguous, fits one session, no durable decision comes out of it | Nothing. Straight to implementation. |
+| Settled and substantial | Outcome agreed and terminology clear, but the work crosses layers or sessions | Skip the interview, write the specification. |
+| Unsettled | Terminology, boundaries, ownership, or acceptance are open | Interview first, then the specification. |
+
+When two routes look equally plausible it takes the more thorough one, because guessing costs more than a question. The two examples below show the first and third.
+
 Stages 1 through 3 and stage 6 are what this playbook owns: turning a fuzzy request into buildable, sliced work, and keeping context intact across the seams. Stages 4 and 5 are deliberately not included; see below.
 
 ## What this playbook leaves out
