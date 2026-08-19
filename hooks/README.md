@@ -50,3 +50,10 @@ Run `python3 hooks/test_docs_drift.py` after changing it.
 Commits made outside Claude Code never reach the hook, and neither does a
 commit whose message arrives through `git commit -F <file>`, since the trailer
 is matched in the command string.
+
+Only `watch` matches trigger the check, so a document describing another
+document drifts silently. A README section that names the skills goes stale
+when a skill is added, and no watched source changed, so nothing reports it.
+Adding the `docs` paths to `watch` would trade that for naming every document
+on every documentation commit, which is why this is a gap rather than a
+setting.
