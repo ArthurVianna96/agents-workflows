@@ -23,7 +23,7 @@ Stages 1 through 3 and stage 6 are what this playbook owns: turning a fuzzy requ
 
 There is no implementation skill and no review skill here. Writing the smallest coherent change, matching local conventions, adding focused tests, inspecting a diff, and reporting findings by severity are general engineering practice, and [create-skills](skills/create-skills/SKILL.md) says not to restate it. A skill that only repeats what a competent agent already does adds a file to load without changing the outcome.
 
-Both stages are also better served by whatever the host environment already provides: a test-first workflow for building, and a dedicated review command for reviewing. Use those, and carry the handoff contract across the boundary so the loop stays intact. [The curated catalog](catalog/third-party-skills.md) lists options.
+Both stages are also better served by whatever the host environment already provides: a test-first workflow for building, and a dedicated review command for reviewing. Use those, and carry the handoff contract across the boundary so the loop stays intact.
 
 ## Skills and agents
 
@@ -52,8 +52,6 @@ The [example walkthrough](examples/add-project-label.md) follows one small featu
 The canonical assets are generic Markdown. They work manually in Codex, Claude Code, and other coding-agent CLIs; see [docs/portability.md](docs/portability.md). This first version deliberately has no installer, CI, release automation, or platform adapter.
 
 Three stages of the loop — [grill-with-docs](skills/grill-with-docs/SKILL.md), [to-spec](skills/to-spec/SKILL.md), and [to-tickets](skills/to-tickets/SKILL.md) — began as MIT-licensed work by others, as did [unslop](skills/unslop/SKILL.md) for prose. They are maintained here as local adaptations and are core to the loop rather than optional add-ons. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) records where they came from; it does not make them external dependencies, and nothing needs separate installation.
-
-Other skills that complement this playbook live in [the curated catalog](catalog/third-party-skills.md) and remain upstream-owned.
 
 ## Contributing
 
