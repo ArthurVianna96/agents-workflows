@@ -17,7 +17,7 @@ Planner → Builder → Reviewer → Handoff
 
 ## Skills and agents
 
-**Skills** are short, reusable instructions for a kind of work: planning, implementing, reviewing, or handing off. They describe a workflow and its expected output.
+**Skills** are short, reusable instructions for a kind of work: planning, implementing, reviewing, handing off, specifying, ticketing, or editing prose. They describe a workflow and its expected output.
 
 **Agent prompts** define a role in the loop. Use them when your coding environment can delegate work to separate agents or when you want a consistent perspective in a new chat.
 
@@ -36,9 +36,11 @@ For a request such as “add an optional project label to a task form,” ask th
 
 ## Portable by design
 
-The canonical assets are generic Markdown. They work manually in Codex, Claude Code, and other coding-agent CLIs; see [docs/portability.md](docs/portability.md). This first version deliberately has no installer, CI, platform adapter, or vendored third-party content.
+The canonical assets are generic Markdown. They work manually in Codex, Claude Code, and other coding-agent CLIs; see [docs/portability.md](docs/portability.md). This first version deliberately has no installer, CI, release automation, or platform adapter.
 
-External skills that complement this playbook live in [the curated catalog](catalog/third-party-skills.md). The catalog points to upstream projects; it does not copy or maintain them here.
+Four MIT-licensed skills are bundled and locally adapted, so they are ready to use without a separate installation: [grill-with-docs](skills/grill-with-docs/SKILL.md), [to-spec](skills/to-spec/SKILL.md), [to-tickets](skills/to-tickets/SKILL.md), and [unslop](skills/unslop/SKILL.md). Their sources and license notices are retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+Other skills that complement this playbook live in [the curated catalog](catalog/third-party-skills.md) and remain upstream-owned.
 
 ## Contributing
 

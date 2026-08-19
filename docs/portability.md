@@ -13,6 +13,8 @@ Each local skill lives at `skills/<skill-name>/SKILL.md`. It is ordinary Markdow
 
 The files intentionally avoid product-specific commands, model names, plugins, and installation syntax. A skill should still make sense when pasted into a plain chat.
 
+The bundled skills adapted from third parties follow the same portable structure. Their provenance and license notices live in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md); they are maintained locally and do not update from upstream automatically.
+
 ## Manual use
 
 In Codex, Claude Code, or another coding-agent CLI, open the appropriate `SKILL.md` and provide its instructions with the task context. If the environment supports delegated agents, also provide the matching file from `agents/` as that agent’s role prompt. If it does not, run the roles sequentially in separate sessions or chats.
