@@ -1,3 +1,8 @@
+---
+name: plan-change
+description: Create an actionable, scoped plan for a software change. Use when requirements need investigation, decisions, or approval before implementation.
+---
+
 # Plan a change
 
 ## Purpose

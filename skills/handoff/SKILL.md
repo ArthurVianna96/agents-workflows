@@ -1,3 +1,8 @@
+---
+name: handoff
+description: Transfer work between people, agents, or sessions with the context needed to continue safely. Use when pausing, delegating, or completing a workflow stage.
+---
+
 # Hand off work
 
 ## Purpose

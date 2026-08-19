@@ -1,69 +1,76 @@
+---
+name: to-spec
+description: Turn settled conversation and repository context into a specification for the configured project tracker. Use when discovery is complete and before multi-session implementation or ticketing.
+---
+
 # Turn a conversation into a specification
 
-> Locally adapted from Matt Pocock’s [to-spec](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-spec/SKILL.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
 
-## Purpose
+The issue tracker and triage label vocabulary should have been provided to you. If not, use the `setup-skills` skill before continuing.
 
-Synthesize settled conversation and repository understanding into a buildable specification without restarting discovery.
+## Process
 
-## When to use
+1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
 
-Use after the problem and major decisions are understood, especially before a multi-session change is planned, delegated, or split into tickets.
+2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
 
-## Required context
+Check with the user that these seams match their expectations.
 
-- The settled conversation, decisions, and constraints.
-- Relevant codebase behavior, glossary, decision records, and repository conventions.
-- The intended destination for the spec: a Markdown file, issue, or project tracker.
+3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
 
-## Workflow
+<spec-template>
 
-1. Inspect the relevant repository areas if they have not already been examined.
-2. Synthesize known context; do not reopen discovery unless repository evidence contradicts a decision.
-3. Identify the highest useful behavioral seams for validation. Prefer existing seams and discuss new ones that materially affect the design.
-4. Draft the specification below, using the project’s domain language and recording explicit out-of-scope decisions.
-5. Review the specification with the requester, then save or publish it in the agreed location.
+## Problem Statement
 
-## Specification template
-
-```text
-# <Feature or change name>
-
-## Problem statement
-
-The problem from the user’s perspective.
+The problem that the user is facing, from the user's perspective.
 
 ## Solution
 
-The intended outcome from the user’s perspective.
+The solution to the problem, from the user's perspective.
 
-## User stories
+## User Stories
 
-1. As a <actor>, I want <feature>, so that <benefit>.
+A LONG, numbered list of user stories. Each user story should be in the format of:
 
-## Implementation decisions
+1. As an <actor>, I want a <feature>, so that <benefit>
 
-- Modules, interfaces, architectural decisions, schema changes, API contracts, or interaction decisions that must survive implementation.
+<user-story-example>
+1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
+</user-story-example>
 
-## Testing decisions
+This list of user stories should be extremely extensive and cover all aspects of the feature.
 
-- Behavioral seams, important cases, and relevant existing test patterns.
+## Implementation Decisions
 
-## Out of scope
+A list of implementation decisions that were made. This can include:
 
-- Explicit exclusions for this change.
+- The modules that will be built/modified
+- The interfaces of those modules that will be modified
+- Technical clarifications from the developer
+- Architectural decisions
+- Schema changes
+- API contracts
+- Specific interactions
 
-## Further notes
+Do NOT include specific file paths or code snippets. They may end up being outdated very quickly.
 
-- Dependencies, rollout considerations, or unresolved questions.
-```
+Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
 
-Avoid brittle file paths and implementation snippets. Include a small prototype-derived snippet only when it records a decision more precisely than prose can.
+## Testing Decisions
 
-## Expected output
+A list of testing decisions that were made. Include:
 
-Provide the completed specification, its location, validation decisions, open questions, and the next action using the shared handoff contract.
+- A description of what makes a good test (only test external behavior, not implementation details)
+- Which modules will be tested
+- Prior art for the tests (i.e. similar types of tests in the codebase)
 
-## Completion criteria
+## Out of Scope
 
-The specification explains the problem, outcome, scope, durable decisions, and validation approach well enough to plan or divide the implementation without rediscovery.
+A description of the things that are out of scope for this spec.
+
+## Further Notes
+
+Any further notes about the feature.
+
+</spec-template>

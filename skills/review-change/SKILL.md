@@ -1,3 +1,8 @@
+---
+name: review-change
+description: Independently review a software change for correctness, regressions, and unmet requirements. Use when implementation is complete and before merge or handoff.
+---
+
 # Review a change
 
 ## Purpose

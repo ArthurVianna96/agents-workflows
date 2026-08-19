@@ -30,6 +30,8 @@ Planner → Builder → Reviewer → Handoff
 
 Begin with [plan-change](skills/plan-change/SKILL.md), then follow the loop. The [example walkthrough](examples/add-project-label.md) shows every artifact working together.
 
+To add or revise a workflow, use [create-skills](skills/create-skills/SKILL.md). It defines the shared format and validates every bundled skill.
+
 ## A short example
 
 For a request such as “add an optional project label to a task form,” ask the Planner to use [the planning skill](skills/plan-change/SKILL.md) and [planner prompt](agents/planner.md). Once the plan is approved, give it to a Builder using [implement-change](skills/implement-change/SKILL.md). Then run [review-change](skills/review-change/SKILL.md) independently and finish with [handoff](skills/handoff/SKILL.md). The complete fictional version is in [examples/](examples/).

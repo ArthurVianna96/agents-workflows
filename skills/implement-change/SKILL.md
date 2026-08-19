@@ -1,3 +1,8 @@
+---
+name: implement-change
+description: Implement an approved software change and validate it against repository conventions. Use when a plan or acceptance criteria are ready for execution.
+---
+
 # Implement a change
 
 ## Purpose
