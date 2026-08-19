@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Edit prose to remove common AI writing patterns while preserving meaning and voice. Use when revising human-facing documentation, explanations, release notes, or narrative text.
+description: Cut AI tells from any writing. Use when writing or revising any human-facing prose, including documentation, commit messages, pull request descriptions, and replies.
 ---
 
 # Unslop
