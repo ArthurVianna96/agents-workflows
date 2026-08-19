@@ -13,6 +13,18 @@ These skills are already available under `skills/`; no separate installation is 
 | to-tickets | [mattpocock/skills](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md) | Matt Pocock | Breaks a plan, specification, or conversation into independently verifiable vertical-slice tickets with blocking relationships. | Use after a plan or spec is agreed and implementation work should be tracked or delegated. | MIT; local adaptation and full notice in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). | Bundled at [`skills/to-tickets`](../skills/to-tickets/SKILL.md). |
 | unslop | [cursor/plugins pstack](https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md) | Lauren Tan (pstack) | Edits writing to remove common AI patterns while preserving meaning and intended tone. | Use as a final prose pass for human-facing documentation, explanations, or other narrative text. | MIT; local adaptation and full notice in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). | Bundled at [`skills/unslop`](../skills/unslop/SKILL.md). |
 
+## Filling the delegated stages
+
+The core loop deliberately owns no implementation or review skill. Use whatever the host environment already provides, or one of these.
+
+| Need | Where to look | Notes |
+| --- | --- | --- |
+| Building a slice test-first | A test-driven-development skill, such as the `tdd` skill in [mattpocock/skills](https://github.com/mattpocock/skills), or the equivalent in Superpowers below. | Pairs with the vertical slices from `to-tickets`: one slice, one red-green cycle. |
+| Answering a design question with runnable code | A prototyping skill, such as `prototype` in [mattpocock/skills](https://github.com/mattpocock/skills). | Belongs inside framing, not after it. `to-spec` explicitly allows inlining a snippet a prototype produced when it encodes a decision more precisely than prose. |
+| Reviewing a change | The review command native to your coding agent. | Prefer a dedicated multi-agent review command over a prose checklist when the environment has one. Verify licensing and current contents before adopting any third-party skill. |
+
+Check each upstream skill's current license and contents before use; none of these are bundled here.
+
 ## Linked upstream collections
 
 These recommendations remain upstream-owned. Follow their installation guidance; they are not bundled here.

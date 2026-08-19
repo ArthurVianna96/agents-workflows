@@ -21,7 +21,7 @@ The bundled skills adapted from third parties follow the same portable structure
 
 ## Manual use
 
-In Codex, Claude Code, or another coding-agent CLI, open the appropriate `SKILL.md` and provide its instructions with the task context. If the environment supports delegated agents, also provide the matching file from `agents/` as that agent’s role prompt. If it does not, run the roles sequentially in separate sessions or chats.
+In Codex, Claude Code, or another coding-agent CLI, open the appropriate `SKILL.md` and provide its instructions with the task context. Framing and specification interview the user and synthesize the conversation they run in, so run them in the session with the user rather than handing them to a detached agent. When a stage needs a fact from the codebase, delegate that lookup to a subagent using [`agents/scout.md`](../agents/scout.md) as its role prompt; if the environment has no subagents, look the fact up yourself before returning to the user.
 
 For automatic discovery, keep this repository’s `skills/` directory as the source of truth and expose its skill folders in the host’s project location:
 
