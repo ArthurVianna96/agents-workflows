@@ -132,6 +132,7 @@ def decide(*, staged, command, watch, docs, records, exclude=(), generated_stale
         "Read the ones that plausibly cover this change and judge them.",
         "A document is stale only when the change contradicts what it claims.",
         "Refactoring behind an unchanged description is not drift.",
+        "The write-docs skill states the rules; this check only decides when to ask.",
         "",
         "A record that the code now contradicts is not edited. Write a new record",
         "superseding it, or fix the code.",

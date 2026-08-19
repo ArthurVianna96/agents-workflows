@@ -94,6 +94,7 @@ check("states the contradiction rule", "contradicts" in blocked["reason"])
 check("tells the agent how to proceed", "Docs-checked:" in blocked["reason"])
 check("demands each document be named", "names each document" in blocked["reason"])
 check("explains the trailer outlives the session", "outlives" in blocked["reason"])
+check("points back to the canonical skill", "write-docs" in blocked["reason"])
 
 print("generated artifacts")
 gen = verdict(["skills/a/SKILL.md"], generated_stale=["api.yaml"])

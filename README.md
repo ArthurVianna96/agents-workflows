@@ -27,7 +27,7 @@ Both stages are also better served by whatever the host environment already prov
 
 ## Skills and agents
 
-**Skills** are short, reusable instructions for a kind of work: framing, interviewing, domain modeling, specifying, ticketing, handing off, or editing prose. They describe a workflow and its expected output.
+**Skills** are short, reusable instructions for a kind of work: framing, interviewing, domain modeling, specifying, ticketing, documenting, handing off, or editing prose. They describe a workflow and its expected output.
 
 **Hooks** are host-specific adapters in [hooks/](hooks/). They are not portable, and the repository does not pretend otherwise. Each one wires a canonical skill into one coding agent's lifecycle and carries no rules the skill does not already state. [ADR-0001](docs/adr/0001-host-adapters-live-in-hooks.md) records why they sit outside `skills/`.
 

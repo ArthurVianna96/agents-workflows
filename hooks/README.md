@@ -21,6 +21,10 @@ that reasoning which outlives the session: a later session recovers it with
 `git log --grep=Docs-checked` and has nothing else to go on. Citing by
 basename is enough, and naming a document before the trailer does not count.
 
+The rules for judging and recording live in the `write-docs` skill, which is
+portable. This adapter decides only when to ask, which is what keeps it inside
+the boundary ADR-0001 draws.
+
 The checker judges nothing itself. It answers "which documents claim to
 describe what you just changed" and lets the agent, which already has the
 change in context, decide whether anything actually contradicts.
