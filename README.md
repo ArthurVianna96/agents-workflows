@@ -17,7 +17,25 @@ Frame → Specify → Slice → Build → Review → Hand off
 5. **Review** the result with your environment’s review tooling.
 6. **Hand off** what the next person or session needs, using [handoff](skills/handoff/SKILL.md).
 
+Stage 1 is a decision, not a cost you always pay. `plan-change` picks one of three routes and tells you which it took:
+
+| Route | When | What runs |
+| --- | --- | --- |
+| Settled and small | Unambiguous, fits one session, no durable decision comes out of it | Nothing. Straight to implementation. |
+| Settled and substantial | Outcome agreed and terminology clear, but the work crosses layers or sessions | Skip the interview, write the specification. |
+| Unsettled | Terminology, boundaries, ownership, or acceptance are open | Interview first, then the specification. |
+
+When two routes look equally plausible it takes the more thorough one, because guessing costs more than a question. The two examples below show the first and third.
+
 Stages 1 through 3 and stage 6 are what this playbook owns: turning a fuzzy request into buildable, sliced work, and keeping context intact across the seams. Stages 4 and 5 are deliberately not included; see below.
+
+## See it work
+
+Read one of these before setting anything up. Both are complete runs on a fictional application, showing what you type and what comes back.
+
+[**Adding a project label**](examples/add-project-label.md) takes the unsettled route: three questions, a glossary entry, a published specification, one ticket, and the handoff. It is the loop at full length, which costs one round trip.
+
+[**Raising an upload limit**](examples/raise-the-upload-limit.md) takes the settled-and-small route: framing gets out of the way in a single line and nothing else runs except the check at the end, which catches a proxy setting that would have silently capped uploads anyway.
 
 ## What this playbook leaves out
 
@@ -25,11 +43,15 @@ There is no implementation skill and no review skill here. Writing the smallest 
 
 Both stages are also better served by whatever the host environment already provides: a test-first workflow for building, and a dedicated review command for reviewing. Use those, and carry the handoff contract across the boundary so the loop stays intact.
 
-## Skills and agents
+## Skills, agents, and hooks
 
-**Skills** are short, reusable instructions for a kind of work: framing, interviewing, domain modeling, specifying, ticketing, handing off, or editing prose. They describe a workflow and its expected output.
+**Skills** are short, reusable instructions for a kind of work: framing, interviewing, domain modeling, specifying, ticketing, documenting, handing off, or editing prose. They describe a workflow and its expected output.
+
+**Hooks** are host-specific adapters in [hooks/](hooks/). They are not portable, and the repository does not pretend otherwise. Each one wires a canonical skill into one coding agent's lifecycle and carries no rules the skill does not already state. [ADR-0001](docs/adr/0001-host-adapters-live-in-hooks.md) records why they sit outside `skills/`.
 
 **Agent prompts** define a role you can delegate. The loop has exactly one: the [scout](agents/scout.md), which finds facts without making decisions. Framing and specification interview the user and read the live conversation, so they run with you rather than in a detached agent.
+
+To add or revise any of them, use [create-skills](skills/create-skills/SKILL.md). It defines the shared format and validates every skill here.
 
 ## Start here
 
@@ -45,13 +67,11 @@ Then, for each request:
 
 When a stage needs a fact about the codebase, delegate the lookup to a subagent with the [scout prompt](agents/scout.md) instead of asking the user something you could find yourself.
 
-The [example walkthrough](examples/add-project-label.md) follows one small feature — an optional project label on a task form — through every stage, including the interview and the handoff. To add or revise a workflow, use [create-skills](skills/create-skills/SKILL.md); it defines the shared format and validates every skill here.
-
 ## Portable by design
 
 The canonical assets are generic Markdown. They work manually in Codex, Claude Code, and other coding-agent CLIs; see [docs/portability.md](docs/portability.md). This first version deliberately has no installer, CI, release automation, or platform adapter.
 
-Three stages of the loop — [grill-with-docs](skills/grill-with-docs/SKILL.md), [to-spec](skills/to-spec/SKILL.md), and [to-tickets](skills/to-tickets/SKILL.md) — began as MIT-licensed work by others, as did [unslop](skills/unslop/SKILL.md) for prose. They are maintained here as local adaptations and are core to the loop rather than optional add-ons. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) records where they came from; it does not make them external dependencies, and nothing needs separate installation.
+Three stages of the loop — [grill-with-docs](skills/grill-with-docs/SKILL.md), [to-spec](skills/to-spec/SKILL.md), and [to-tickets](skills/to-tickets/SKILL.md) — began as MIT-licensed work by others, as did [unslop](skills/unslop/SKILL.md) for prose and [triage](skills/triage/SKILL.md) for the issue queue. They are maintained here as local adaptations and are core to the loop rather than optional add-ons. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) records where they came from; it does not make them external dependencies, and nothing needs separate installation.
 
 ## Contributing
 

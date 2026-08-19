@@ -1,0 +1,15 @@
+{
+  "watch": ["skills/**/*.md", "agents/*.md", "hooks/*.py", "scripts/*"],
+  "docs": [
+    "README.md",
+    "CONTRIBUTING.md",
+    "AGENTS.md",
+    "docs/*.md",
+    "docs/agents/*.md",
+    "examples/*.md",
+    "hooks/README.md"
+  ],
+  "records": ["docs/adr/*.md"],
+  "exclude": ["docs/issues/**"],
+  "generated": []
+}

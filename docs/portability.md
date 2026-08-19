@@ -23,12 +23,12 @@ The bundled skills adapted from third parties follow the same portable structure
 
 In Codex, Claude Code, or another coding-agent CLI, open the appropriate `SKILL.md` and provide its instructions with the task context. Framing and specification interview the user and synthesize the conversation they run in, so run them in the session with the user rather than handing them to a detached agent. When a stage needs a fact from the codebase, delegate that lookup to a subagent using [`agents/scout.md`](../agents/scout.md) as its role prompt; if the environment has no subagents, look the fact up yourself before returning to the user.
 
-For automatic discovery, keep this repository’s `skills/` directory as the source of truth and expose its skill folders in the host’s project location:
+For automatic discovery, keep this repository’s `skills/` directory as the source of truth and expose its skill folders where the host looks for them:
 
-- Codex discovers repository skills from `.agents/skills/<skill-name>/SKILL.md`.
-- Claude Code discovers project skills from `.claude/skills/<skill-name>/SKILL.md`.
+- Codex reads personal skills from `$CODEX_HOME/skills/<skill-name>/SKILL.md`, which defaults to `~/.codex/skills`. Its bundled `skill-installer` documents that path, and `/skills` lists what it found.
+- Claude Code reads personal skills from `~/.claude/skills/<skill-name>/SKILL.md` and project skills from `.claude/skills/<skill-name>/SKILL.md` in the repository.
 
-Copy or symlink each skill folder into the appropriate host location; do not maintain divergent copies. The shared frontmatter and provider-neutral body work in both environments. See the official [Codex skill documentation](https://developers.openai.com/codex/skills) and [Claude Code skill documentation](https://code.claude.com/docs/en/slash-commands) for host-specific discovery and optional features.
+Symlink each skill folder into the appropriate host location rather than copying it, so this repository stays the single source of truth and a pull updates every host at once. Do not maintain divergent copies. Check the host's own documentation for project-scoped discovery before relying on it; the personal paths above are the ones verified here. The shared frontmatter and provider-neutral body work in both environments. See the official [Codex skill documentation](https://developers.openai.com/codex/skills) and [Claude Code skill documentation](https://code.claude.com/docs/en/slash-commands) for host-specific discovery and optional features.
 
 For each transition, carry the handoff contract forward: task goal, decisions, files changed, validation performed, remaining risks, and next action. This preserves enough context without assuming any platform’s memory or orchestration features.
 
