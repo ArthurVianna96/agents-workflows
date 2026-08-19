@@ -51,7 +51,7 @@ The [example walkthrough](examples/add-project-label.md) follows one small featu
 
 The canonical assets are generic Markdown. They work manually in Codex, Claude Code, and other coding-agent CLIs; see [docs/portability.md](docs/portability.md). This first version deliberately has no installer, CI, release automation, or platform adapter.
 
-Three stages of the loop — [grill-with-docs](skills/grill-with-docs/SKILL.md), [to-spec](skills/to-spec/SKILL.md), and [to-tickets](skills/to-tickets/SKILL.md) — began as MIT-licensed work by others, as did [unslop](skills/unslop/SKILL.md) for prose. They are maintained here as local adaptations and are core to the loop rather than optional add-ons. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) records where they came from; it does not make them external dependencies, and nothing needs separate installation.
+Three stages of the loop — [grill-with-docs](skills/grill-with-docs/SKILL.md), [to-spec](skills/to-spec/SKILL.md), and [to-tickets](skills/to-tickets/SKILL.md) — began as MIT-licensed work by others, as did [unslop](skills/unslop/SKILL.md) for prose and [triage](skills/triage/SKILL.md) for the issue queue. They are maintained here as local adaptations and are core to the loop rather than optional add-ons. [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) records where they came from; it does not make them external dependencies, and nothing needs separate installation.
 
 ## Contributing
 
