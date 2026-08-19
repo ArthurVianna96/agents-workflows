@@ -4,7 +4,7 @@ The skills below are copied and locally adapted. Their upstream source URLs are 
 
 ## Matt Pocock skills
 
-The locally adapted `grill-with-docs`, `to-spec`, and `to-tickets` skills include material from `mattpocock/skills`.
+The locally adapted `grill-with-docs`, `to-spec`, `to-tickets`, `grilling`, `domain-modeling`, `setup-matt-pocock-skills`, and `triage` skills include material from `mattpocock/skills`.
 
 ```text
 MIT License

@@ -47,7 +47,7 @@ Then, for each request:
 
 When a stage needs a fact about the codebase, delegate the lookup to a subagent with the [scout prompt](agents/scout.md) instead of asking the user something you could find yourself.
 
-The [example walkthrough](examples/add-project-label.md) follows one small feature — an optional project label on a task form — through every stage, including the interview and the handoff. To add or revise a workflow, use [create-skills](skills/create-skills/SKILL.md); it defines the shared format and validates every skill here.
+Two worked examples show what this looks like in practice. [Adding a project label](examples/add-project-label.md) runs the full loop on one small feature, showing what you type and what comes back at each stage. [Raising an upload limit](examples/raise-the-upload-limit.md) is the short route, where the framing step decides the change needs no interview at all and only the documentation check still runs. To add or revise a workflow, use [create-skills](skills/create-skills/SKILL.md); it defines the shared format and validates every skill here.
 
 ## Portable by design
 
