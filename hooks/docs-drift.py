@@ -15,7 +15,7 @@ import json
 import re
 import subprocess
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 TRAILER = "Docs-checked:"
 CONFIG_NAME = ".claude/docs-drift.json"
@@ -55,6 +55,19 @@ def select(paths, include, exclude=()):
     return [p for p in paths if matches_any(p, include) and not matches_any(p, exclude)]
 
 
+def cited_documents(command, known):
+    """Documents from `known` named in the text following the trailer marker.
+
+    Only text after the marker counts, so a `git add README.md` earlier in the
+    same command line is not mistaken for a citation.
+    """
+    index = command.find(TRAILER)
+    if index == -1:
+        return []
+    tail = command[index + len(TRAILER):]
+    return [p for p in known if p in tail or PurePosixPath(p).name in tail]
+
+
 def decide(*, staged, command, watch, docs, records, exclude=(), generated_stale=()):
     """Pure decision. Returns {"allow": bool, "reason": str}.
 
@@ -76,15 +89,31 @@ def decide(*, staged, command, watch, docs, records, exclude=(), generated_stale
             ),
         }
 
-    if TRAILER in command:
-        return {"allow": True, "reason": "Commit message carries a Docs-checked trailer."}
-
     touched = select(staged, watch, exclude)
     if not touched:
         return {"allow": True, "reason": "No watched source files staged."}
 
     candidates = sorted(docs)
     immutable = sorted(records)
+
+    if TRAILER in command:
+        cited = cited_documents(command, candidates + immutable)
+        if cited:
+            return {"allow": True, "reason": f"Trailer cites {', '.join(cited)}."}
+        listing = "\n".join(f"  {p}" for p in candidates + immutable)
+        return {
+            "allow": False,
+            "reason": (
+                f"The {TRAILER} trailer names no document.\n\n"
+                "This trailer is the only record of your reasoning that outlives "
+                "the session. A later session recovers it with\n"
+                "`git log --grep=Docs-checked` and has nothing else to go on, so "
+                '"none" or "n/a" is indistinguishable from skipping the check.\n\n'
+                f"Name at least one of:\n{listing}\n\n"
+                "For example:\n"
+                f"  {TRAILER} README.md unaffected, it does not describe this behavior"
+            ),
+        }
 
     lines = [
         "Documentation drift check. This commit changes files that documents describe.",
@@ -107,8 +136,13 @@ def decide(*, staged, command, watch, docs, records, exclude=(), generated_stale
         "A record that the code now contradicts is not edited. Write a new record",
         "superseding it, or fix the code.",
         "",
-        f"Then commit again with a {TRAILER} trailer naming what you checked,",
-        f"for example `{TRAILER} README.md updated; docs/portability.md unaffected`.",
+        f"Then commit again with a {TRAILER} trailer that names each document you",
+        "read and what you concluded about it. Naming no document is rejected:",
+        "the trailer is the only record of this reasoning that outlives the",
+        "session, and a later session recovers it from `git log` alone.",
+        "",
+        f"  {TRAILER} README.md updated for the new category;",
+        "                docs/portability.md unaffected, it describes skill format",
     ]
     return {"allow": False, "reason": "\n".join(lines)}
 

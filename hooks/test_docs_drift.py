@@ -56,12 +56,33 @@ check("excluded path does not trigger", verdict(["docs/issues/a.md"])["allow"])
 
 print("trailer")
 check(
-    "trailer admits the retry",
+    "trailer citing a document admits the retry",
     verdict(["skills/triage/SKILL.md"], command="git commit -m 'x\n\nDocs-checked: README.md unaffected'")["allow"],
 )
 check(
     "trailer in a heredoc body is seen",
-    verdict(["hooks/docs-drift.py"], command="git commit -F - <<'EOF'\nx\n\nDocs-checked: none\nEOF")["allow"],
+    verdict(["hooks/docs-drift.py"], command="git commit -F - <<'EOF'\nx\n\nDocs-checked: docs/portability.md reviewed\nEOF")["allow"],
+)
+check(
+    "citing by basename is enough",
+    verdict(["skills/a/SKILL.md"], command="git commit -m 'x\n\nDocs-checked: portability.md unaffected'")["allow"],
+)
+check(
+    "citing a record counts",
+    verdict(["skills/a/SKILL.md"], command="git commit -m 'x\n\nDocs-checked: 0001-host-adapters-live-in-hooks.md still holds'")["allow"],
+)
+
+bare = verdict(["skills/a/SKILL.md"], command="git commit -m 'x\n\nDocs-checked: none'")
+check("bare trailer is rejected", not bare["allow"])
+check("rejection says why the trailer matters", "outlives" in bare["reason"])
+check("rejection lists what can be cited", "README.md" in bare["reason"])
+check(
+    "a document named before the trailer does not count",
+    not verdict(["skills/a/SKILL.md"], command="git add README.md && git commit -m 'x\n\nDocs-checked: n/a'")["allow"],
+)
+check(
+    "docs-only commit needs no trailer at all",
+    verdict(["README.md"], command="git commit -m 'tweak'")["allow"],
 )
 
 print("block message")
@@ -71,6 +92,8 @@ check("lists candidate docs", "docs/portability.md" in blocked["reason"])
 check("separates records from docs", "never edit" in blocked["reason"])
 check("states the contradiction rule", "contradicts" in blocked["reason"])
 check("tells the agent how to proceed", "Docs-checked:" in blocked["reason"])
+check("demands each document be named", "names each document" in blocked["reason"])
+check("explains the trailer outlives the session", "outlives" in blocked["reason"])
 
 print("generated artifacts")
 gen = verdict(["skills/a/SKILL.md"], generated_stale=["api.yaml"])

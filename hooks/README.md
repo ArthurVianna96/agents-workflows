@@ -15,6 +15,12 @@ to watched source files and the message carries no `Docs-checked:` trailer, it
 blocks the commit and hands the agent the documents that may now contradict
 the change. The agent reads them, judges, and commits again with the trailer.
 
+The trailer must name at least one of the listed documents. A bare
+`Docs-checked: none` is rejected, because the trailer is the only record of
+that reasoning which outlives the session: a later session recovers it with
+`git log --grep=Docs-checked` and has nothing else to go on. Citing by
+basename is enough, and naming a document before the trailer does not count.
+
 The checker judges nothing itself. It answers "which documents claim to
 describe what you just changed" and lets the agent, which already has the
 change in context, decide whether anything actually contradicts.
