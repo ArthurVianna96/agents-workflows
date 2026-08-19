@@ -29,19 +29,29 @@ When two routes look equally plausible it takes the more thorough one, because g
 
 Stages 1 through 3 and stage 6 are what this playbook owns: turning a fuzzy request into buildable, sliced work, and keeping context intact across the seams. Stages 4 and 5 are deliberately not included; see below.
 
+## See it work
+
+Read one of these before setting anything up. Both are complete runs on a fictional application, showing what you type and what comes back.
+
+[**Adding a project label**](examples/add-project-label.md) takes the unsettled route: three questions, a glossary entry, a published specification, one ticket, and the handoff. It is the loop at full length, which costs one round trip.
+
+[**Raising an upload limit**](examples/raise-the-upload-limit.md) takes the settled-and-small route: framing gets out of the way in a single line and nothing else runs except the check at the end, which catches a proxy setting that would have silently capped uploads anyway.
+
 ## What this playbook leaves out
 
 There is no implementation skill and no review skill here. Writing the smallest coherent change, matching local conventions, adding focused tests, inspecting a diff, and reporting findings by severity are general engineering practice, and [create-skills](skills/create-skills/SKILL.md) says not to restate it. A skill that only repeats what a competent agent already does adds a file to load without changing the outcome.
 
 Both stages are also better served by whatever the host environment already provides: a test-first workflow for building, and a dedicated review command for reviewing. Use those, and carry the handoff contract across the boundary so the loop stays intact.
 
-## Skills and agents
+## Skills, agents, and hooks
 
 **Skills** are short, reusable instructions for a kind of work: framing, interviewing, domain modeling, specifying, ticketing, documenting, handing off, or editing prose. They describe a workflow and its expected output.
 
 **Hooks** are host-specific adapters in [hooks/](hooks/). They are not portable, and the repository does not pretend otherwise. Each one wires a canonical skill into one coding agent's lifecycle and carries no rules the skill does not already state. [ADR-0001](docs/adr/0001-host-adapters-live-in-hooks.md) records why they sit outside `skills/`.
 
 **Agent prompts** define a role you can delegate. The loop has exactly one: the [scout](agents/scout.md), which finds facts without making decisions. Framing and specification interview the user and read the live conversation, so they run with you rather than in a detached agent.
+
+To add or revise any of them, use [create-skills](skills/create-skills/SKILL.md). It defines the shared format and validates every skill here.
 
 ## Start here
 
@@ -56,8 +66,6 @@ Then, for each request:
 4. **Follow the loop from there,** carrying the handoff contract across every stage boundary. The boundary that matters most is the one where you leave for your own build and review tooling, because that is where context goes missing.
 
 When a stage needs a fact about the codebase, delegate the lookup to a subagent with the [scout prompt](agents/scout.md) instead of asking the user something you could find yourself.
-
-Two worked examples show what this looks like in practice. [Adding a project label](examples/add-project-label.md) runs the full loop on one small feature, showing what you type and what comes back at each stage. [Raising an upload limit](examples/raise-the-upload-limit.md) is the short route, where the framing step decides the change needs no interview at all and only the documentation check still runs. To add or revise a workflow, use [create-skills](skills/create-skills/SKILL.md); it defines the shared format and validates every skill here.
 
 ## Portable by design
 
