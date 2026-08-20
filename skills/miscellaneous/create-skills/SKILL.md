@@ -9,15 +9,16 @@ Create skills as small, self-contained instruction packages. Write only the task
 
 ## Required structure
 
-Put every skill at `skills/<skill-name>/SKILL.md`.
+Put every skill at `skills/<category>/<skill-name>/SKILL.md`. The categories are `engineering`, `productivity`, and `miscellaneous`; the validator rejects anything else, so adding a fourth is a deliberate edit rather than a new directory.
 
 ```text
 skills/
-└── <skill-name>/
-    └── SKILL.md
+└── <category>/
+    └── <skill-name>/
+        └── SKILL.md
 ```
 
-Use lowercase hyphenated names. Match the directory name and the frontmatter `name` exactly.
+Use lowercase hyphenated names. Match the directory name and the frontmatter `name` exactly. The category is not part of the name and never reaches the host, which reads a flat `<skill-name>/SKILL.md`.
 
 Start every `SKILL.md` with this portable frontmatter:
 

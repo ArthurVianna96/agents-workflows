@@ -79,4 +79,4 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 30. **Cut adverbs, or use a stronger verb.** "runs quickly" becomes "is fast" or the number. "significantly improves" becomes the measured delta. An adverb propping up a weak verb means the verb is wrong.
 31. **Prefer the plain word.** "utilize" becomes "use", "leverage" becomes "use", "facilitate" becomes "help", "numerous" becomes "many", "in the event that" becomes "if". The fancier synonym is rarely clearer.
 
-> Locally adapted from Lauren Tan’s [pstack unslop](https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md), retrieved 2026-08-19. Copyright © 2026 Lauren Tan; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+> Locally adapted from Lauren Tan’s [pstack unslop](https://github.com/cursor/plugins/blob/main/pstack/skills/engineering/unslop/SKILL.md), retrieved 2026-08-19. Copyright © 2026 Lauren Tan; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../../THIRD_PARTY_NOTICES.md).

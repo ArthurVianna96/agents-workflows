@@ -2,7 +2,7 @@
 
 ## Canonical format
 
-Each local skill lives at `skills/<skill-name>/SKILL.md`. Its folder name and `name` must match and use lowercase hyphenated words. Every `SKILL.md` begins with this YAML frontmatter:
+Each local skill lives at `skills/<category>/<skill-name>/SKILL.md`, where the category is `engineering`, `productivity`, or `miscellaneous`. Its folder name and `name` must match and use lowercase hyphenated words. The category groups skills in this repository and never reaches a host; both read a flat `<skill-name>/SKILL.md`. See [ADR-0002](adr/0002-skills-are-organized-by-category.md). Every `SKILL.md` begins with this YAML frontmatter:
 
 ```yaml
 ---
@@ -28,7 +28,7 @@ For automatic discovery, keep this repository’s `skills/` directory as the sou
 - Codex reads personal skills from `$CODEX_HOME/skills/<skill-name>/SKILL.md`, which defaults to `~/.codex/skills`. Its bundled `skill-installer` documents that path, and `/skills` lists what it found.
 - Claude Code reads personal skills from `~/.claude/skills/<skill-name>/SKILL.md` and project skills from `.claude/skills/<skill-name>/SKILL.md` in the repository.
 
-Symlink each skill folder into the appropriate host location rather than copying it, so this repository stays the single source of truth and a pull updates every host at once. Do not maintain divergent copies. Check the host's own documentation for project-scoped discovery before relying on it; the personal paths above are the ones verified here. The shared frontmatter and provider-neutral body work in both environments. See the official [Codex skill documentation](https://developers.openai.com/codex/skills) and [Claude Code skill documentation](https://code.claude.com/docs/en/slash-commands) for host-specific discovery and optional features.
+Symlink each skill folder into the appropriate host location rather than copying it, so this repository stays the single source of truth and a pull updates every host at once. The source path is nested and the link name is flat, so `skills/engineering/handoff` becomes `~/.claude/skills/handoff`. Categories exist on this side of the symlink only. Do not maintain divergent copies. Check the host's own documentation for project-scoped discovery before relying on it; the personal paths above are the ones verified here. The shared frontmatter and provider-neutral body work in both environments. See the official [Codex skill documentation](https://developers.openai.com/codex/skills) and [Claude Code skill documentation](https://code.claude.com/docs/en/slash-commands) for host-specific discovery and optional features.
 
 For each transition, carry the handoff contract forward: task goal, decisions, files changed, validation performed, remaining risks, and next action. This preserves enough context without assuming any platform’s memory or orchestration features.
 
