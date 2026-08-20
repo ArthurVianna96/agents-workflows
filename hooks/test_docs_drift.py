@@ -2,7 +2,7 @@
 """Fixture tests for the documentation drift checker.
 
 Run with `python3 hooks/test_docs_drift.py`. No test runner, matching
-scripts/validate-skills.rb: one command, no dependencies.
+scripts/validate.rb: one command, no dependencies.
 """
 
 import importlib.util

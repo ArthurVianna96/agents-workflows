@@ -15,7 +15,7 @@ The body starts with one Markdown H1 and contains concise, imperative instructio
 
 The canonical frontmatter intentionally uses only `name` and `description`. Codex requires those fields for a `SKILL.md`; Claude Code accepts that same portable subset. Both products use the description for discovery, so it must state the task and concrete trigger language. Host-specific fields, dynamic command injection, permissions, and invocation policies stay out of canonical skills because they do not transfer cleanly.
 
-The files intentionally avoid coding-agent-specific commands, model names, plugins, and installation syntax. An external CLI may be part of a workflow when it is necessary, but the skill must state that prerequisite or a manual fallback. A skill should still make sense when pasted into a plain chat. Run `ruby scripts/validate-skills.rb` after any skill change.
+The files intentionally avoid coding-agent-specific commands, model names, plugins, and installation syntax. An external CLI may be part of a workflow when it is necessary, but the skill must state that prerequisite or a manual fallback. A skill should still make sense when pasted into a plain chat. Run `ruby scripts/validate.rb` after any change; it checks the skill convention and every internal link.
 
 The bundled skills adapted from third parties follow the same portable structure. Their provenance and license notices live in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md); they are maintained locally and do not update from upstream automatically.
 

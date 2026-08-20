@@ -50,7 +50,7 @@ Follow frontmatter with one human-readable H1, then imperative instructions. Use
 3. Create the skill folder and `SKILL.md` with the required frontmatter and H1.
 4. Write only the non-obvious workflow, validation, and output guidance needed to perform the task reliably.
 5. Add a directly linked reference, script, or asset only when it is necessary for repeated use.
-6. Run `ruby scripts/validate-skills.rb` and fix every reported error.
+6. Run `ruby scripts/validate.rb` and fix every reported error.
 7. Read the skill as a standalone artifact and test it on a realistic request before relying on it.
 
 ## Template
