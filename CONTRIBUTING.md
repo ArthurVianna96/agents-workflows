@@ -10,4 +10,4 @@ Keep this repository portable, focused, and safe to publish.
 - Vendor third-party skills only when their license permits it, and only when the skill earns a place in the loop. Keep the upstream URL and author in the skill, retain the required license notice in `THIRD_PARTY_NOTICES.md`, and label local adaptations clearly.
 - Never add secrets, customer data, employer-specific material, private repository details, or credentials.
 
-Before proposing a change, read the affected file as a standalone artifact, run `ruby scripts/validate-skills.rb`, check its links, and make sure it fits the shared handoff contract where applicable.
+Before proposing a change, read the affected file as a standalone artifact, run `ruby scripts/validate.rb`, and make sure it fits the shared handoff contract where applicable.
