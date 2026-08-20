@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-"""Stop-hook adapter that holds a reply to the unslop rules before it lands.
+"""Stop-hook adapter that checks a reply against the unslop rules before it lands.
 
-Two checks, both aimed at a failure that instructions alone did not prevent:
-the rules were stated in global instructions and the closing pass still got
-skipped for a whole session's worth of documents.
+Instructions alone did not prevent the failure this exists for. A global
+instruction file already carried the rules, and one session still shipped seven
+documents without the closing pass that same file asks for.
 
-  A. Mechanical tells in the reply itself. Only the rules that are word or
-     phrase lists, matched literally. Roughly half the skill.
-  B. A document was written and the skill was never loaded. This is the check
-     that catches the failure above.
+  A. Mechanical tells in the reply. Only the rules that are word or phrase
+     lists, matched literally. About half the skill.
+  B. The session wrote a document and never loaded the skill. This check
+     catches the failure above.
 
-The adapter carries no rules of its own, as CONTRIBUTING requires. Every term
-below is verified at runtime against skills/engineering/unslop/SKILL.md, and a
-term that has left the skill is reported as drift rather than enforced.
+CONTRIBUTING says an adapter carries no rules of its own, so the script checks
+every term below against skills/engineering/unslop/SKILL.md at runtime. If a
+term has left the skill, the script reports drift instead of enforcing it.
 
-What it cannot check: rules 27 through 30 and the "adding soul" section.
-Voiceless prose, dense sentences, hedging, and weak verbs propped up by adverbs
-need a reader. Nothing here substitutes for running the skill.
+Rules 27 through 30 and the "adding soul" section stay out of reach. Voiceless
+prose, dense sentences, hedging, and weak verbs propped up by adverbs all need
+a reader, and nothing here substitutes for running the skill.
 """
 
 import json

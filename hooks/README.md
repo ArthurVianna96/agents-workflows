@@ -10,42 +10,46 @@ skill. An adapter that starts carrying rules of its own is a defect.
 
 ## unslop-check.py
 
-A Claude Code `Stop` hook. Before a reply lands it holds the turn to the
-`unslop` skill, on two counts.
+A Claude Code `Stop` hook. It checks a reply against the `unslop` skill before
+that reply lands, on two counts.
 
-**Mechanical tells.** The rules that are word or phrase lists, matched
-literally against the reply: AI vocabulary, em dashes, curly quotes, chatbot
-phrases, sycophancy, filler, puffery, fancy synonyms, and the rest. On a hit it
-blocks with the rule number, the match, and what to write instead.
+**Mechanical tells.** Some rules are word or phrase lists, so the script matches
+them literally: AI vocabulary, em dashes, curly quotes, chatbot phrases,
+sycophancy, filler, puffery, fancy synonyms. On a hit it blocks the turn and
+names the rule number, the match, and what to write instead.
 
-**The closing pass.** If the session wrote a Markdown document and never loaded
-the `unslop` skill, it blocks and says so. Documents are detected from `Write`
-and `Edit` and from shell redirects and heredocs, because a document written
-with `cat > page.md` is still a document.
+**The closing pass.** When a session has written a Markdown document and never
+loaded the `unslop` skill, the hook blocks and says so. It finds those documents
+in `Write` and `Edit` calls and in shell redirects and heredocs. A page written
+with `cat > page.md` is still a page, and watching the file tools alone would
+miss it.
 
-That second check exists because the first is not enough. The short list in a
-global instruction file covers the mechanical rules; it does not carry rules 27
-to 30 or the "adding soul" section, and a whole session's worth of documents
-once shipped without them.
+The second check exists because the first is not enough. A short rule list in a
+global instruction file covers the mechanical patterns. It carries neither rules
+27 to 30 nor the "adding soul" section, and one session shipped seven documents
+that way before anyone noticed.
 
-Roughly half the skill is enforceable this way. Voiceless prose, dense
-sentences, passive voice, and adverbs propping up weak verbs need a reader,
-and no exit code substitutes for one.
+So the honest ceiling here is about half the skill. Voiceless prose, dense
+sentences, passive voice, and adverbs propping up weak verbs all need a reader.
+No exit code substitutes for one. The block message says as much, so a silent
+pass never reads as "this prose is good".
 
-Terms whose innocent use is common are left out on purpose: `features`,
-`surface`, `harness`, `primitive`, `vector`, `scaffolding`, `landscape`. A
-check that cries wolf gets turned off. Code fences, inline code, blockquotes,
-and link targets are stripped first, so a banned word being discussed is not
-treated as a banned word being used.
+Two things keep the check from becoming noise. Some terms stay out because
+their innocent use is common: `features`, `surface`, `harness`, `primitive`,
+`vector`, `scaffolding`, `landscape`. And the script strips code fences, inline
+code, blockquotes, and link targets before it matches anything, so a banned word
+under discussion does not read as one in use.
 
-Every term is verified against the skill at runtime. One that has left the
-skill is reported as drift instead of enforced, which is how the adapter stays
-inside the boundary ADR-0001 draws. `python3 hooks/test_unslop_check.py` checks
-that, and the redaction, and both document signals.
+The script also verifies every term against the skill each time it runs. If a
+term has left the skill, it reports drift instead of enforcing the term. That is
+how this adapter stays inside the boundary ADR-0001 draws.
+`python3 hooks/test_unslop_check.py` covers the drift check, the redaction, and
+both document signals.
 
-Install it by pointing your `~/.claude/settings.json` `Stop` hook at this
-script. It fails open: no transcript, unreadable input, or a missing skill file
-all exit silently rather than stopping a session.
+To install it, point the `Stop` hook in your `~/.claude/settings.json` at this
+script. It fails open. A missing transcript, unreadable input, a missing skill
+file, or a second block on an already-stopped turn all exit silently, because a
+hook that can wedge a session is worse than no hook.
 
 ## docs-drift.py
 
