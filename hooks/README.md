@@ -8,6 +8,45 @@ why they live here rather than in `skills/`.
 An adapter decides only *when* the host invokes a skill. Rules belong in the
 skill. An adapter that starts carrying rules of its own is a defect.
 
+## unslop-check.py
+
+A Claude Code `Stop` hook. Before a reply lands it holds the turn to the
+`unslop` skill, on two counts.
+
+**Mechanical tells.** The rules that are word or phrase lists, matched
+literally against the reply: AI vocabulary, em dashes, curly quotes, chatbot
+phrases, sycophancy, filler, puffery, fancy synonyms, and the rest. On a hit it
+blocks with the rule number, the match, and what to write instead.
+
+**The closing pass.** If the session wrote a Markdown document and never loaded
+the `unslop` skill, it blocks and says so. Documents are detected from `Write`
+and `Edit` and from shell redirects and heredocs, because a document written
+with `cat > page.md` is still a document.
+
+That second check exists because the first is not enough. The short list in a
+global instruction file covers the mechanical rules; it does not carry rules 27
+to 30 or the "adding soul" section, and a whole session's worth of documents
+once shipped without them.
+
+Roughly half the skill is enforceable this way. Voiceless prose, dense
+sentences, passive voice, and adverbs propping up weak verbs need a reader,
+and no exit code substitutes for one.
+
+Terms whose innocent use is common are left out on purpose: `features`,
+`surface`, `harness`, `primitive`, `vector`, `scaffolding`, `landscape`. A
+check that cries wolf gets turned off. Code fences, inline code, blockquotes,
+and link targets are stripped first, so a banned word being discussed is not
+treated as a banned word being used.
+
+Every term is verified against the skill at runtime. One that has left the
+skill is reported as drift instead of enforced, which is how the adapter stays
+inside the boundary ADR-0001 draws. `python3 hooks/test_unslop_check.py` checks
+that, and the redaction, and both document signals.
+
+Install it by pointing your `~/.claude/settings.json` `Stop` hook at this
+script. It fails open: no transcript, unreadable input, or a missing skill file
+all exit silently rather than stopping a session.
+
 ## docs-drift.py
 
 A Claude Code `PreToolUse` hook on `Bash`. When a `git commit` stages changes
