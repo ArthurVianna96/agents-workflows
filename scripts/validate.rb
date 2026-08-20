@@ -15,7 +15,22 @@ errors = []
 
 # --- Skill convention -------------------------------------------------------
 
-skill_files = Dir.glob(File.join(ROOT, "skills", "*", "SKILL.md")).sort
+# Categories are a repository-side concern: they disappear at install time, so
+# adding one is a deliberate edit here rather than a new directory. See ADR-0002.
+CATEGORIES = %w[engineering miscellaneous productivity].freeze
+
+skill_files = Dir.glob(File.join(ROOT, "skills", "*", "*", "SKILL.md")).sort
+
+Dir.glob(File.join(ROOT, "skills", "*")).select { |path| File.directory?(path) }.sort.each do |dir|
+  category = File.basename(dir)
+  next if CATEGORIES.include?(category)
+
+  errors << "skills/#{category}: not a known category (#{CATEGORIES.join(", ")})"
+end
+
+Dir.glob(File.join(ROOT, "skills", "*", "SKILL.md")).sort.each do |file|
+  errors << "#{relative(file)}: skill sits outside a category directory"
+end
 
 skill_files.each do |file|
   name = relative(file)

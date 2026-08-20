@@ -46,4 +46,4 @@ If a decision is easy to reverse, skip it: you'll just reverse it. If it's not s
 - **Constraints not visible in the code.** "We can't use AWS because of compliance requirements." "Response times must be under 200ms because of the partner API contract."
 - **Rejected alternatives when the rejection is non-obvious.** If you considered GraphQL and picked REST for subtle reasons, record it; otherwise someone will suggest GraphQL again in six months.
 
-> Locally adapted from Matt Pocock’s [domain-modeling](https://github.com/mattpocock/skills/blob/main/skills/engineering/domain-modeling/ADR-FORMAT.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+> Locally adapted from Matt Pocock’s [domain-modeling](https://github.com/mattpocock/skills/blob/main/skills/engineering/domain-modeling/ADR-FORMAT.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../../THIRD_PARTY_NOTICES.md).

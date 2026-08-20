@@ -106,4 +106,4 @@ Capture everything resolved during grilling under "established so far" so the wo
 
 If prior triage notes exist on the issue or PR, read them, check whether the reporter has answered any outstanding questions, and present an updated picture before continuing. Don't re-ask resolved questions.
 
-> Locally adapted from Matt Pocock’s [triage](https://github.com/mattpocock/skills/blob/main/skills/engineering/triage/SKILL.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+> Locally adapted from Matt Pocock’s [triage](https://github.com/mattpocock/skills/blob/main/skills/engineering/triage/SKILL.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../../THIRD_PARTY_NOTICES.md).

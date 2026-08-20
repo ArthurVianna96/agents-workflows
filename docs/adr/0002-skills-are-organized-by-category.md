@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-19
-- **Related:** [create-skills](../../skills/create-skills/SKILL.md), [portability](../portability.md), [ADR-0001](0001-host-adapters-live-in-hooks.md)
+- **Related:** [create-skills](../../skills/miscellaneous/create-skills/SKILL.md), [portability](../portability.md), [ADR-0001](0001-host-adapters-live-in-hooks.md)
 
 ## Context
 

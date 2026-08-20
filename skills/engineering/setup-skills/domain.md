@@ -50,4 +50,4 @@ If your output contradicts an existing ADR, surface it explicitly rather than si
 
 > _Contradicts ADR-0007 (event-sourced orders), but worth reopening because…_
 
-> Locally adapted from Matt Pocock’s [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/domain.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+> Locally adapted from Matt Pocock’s [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/domain.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../../THIRD_PARTY_NOTICES.md).

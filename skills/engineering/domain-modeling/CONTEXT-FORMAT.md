@@ -59,4 +59,4 @@ The skill infers which structure applies:
 
 When multiple contexts exist, infer which one the current topic relates to. If unclear, ask.
 
-> Locally adapted from Matt Pocock’s [domain-modeling](https://github.com/mattpocock/skills/blob/main/skills/engineering/domain-modeling/CONTEXT-FORMAT.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md).
+> Locally adapted from Matt Pocock’s [domain-modeling](https://github.com/mattpocock/skills/blob/main/skills/engineering/domain-modeling/CONTEXT-FORMAT.md), retrieved 2026-08-19. Copyright © 2026 Matt Pocock; MIT licensed. See [THIRD_PARTY_NOTICES.md](../../../THIRD_PARTY_NOTICES.md).
