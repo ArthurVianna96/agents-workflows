@@ -95,6 +95,7 @@ yes
 
 ```markdown
 ---
+date: 2026-08-20
 tags: [databases, lesson]
 ---
 
