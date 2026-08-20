@@ -11,7 +11,7 @@ A self-contained instruction package for one kind of work, at `skills/<category>
 _Avoid_: Prompt, template, command
 
 **Workflow**:
-An ordered set of stages for one kind of work, expressed as a page under `workflows/<name>/` plus the skills that run its stages. The engineering loop is one; the learning loop is another. A workflow may enter through a routing skill, as engineering does through `plan-change`, or through a single skill, as learning does through `learn-stuff`.
+An ordered set of stages for one kind of work, expressed as a page under `workflows/<name>/` plus the skills that run its stages. Engineering, learning, and job-hunting are the three. A workflow may enter through a routing skill, as engineering does through `plan-change`, or through a single skill, as learning does through `learn-stuff` and job-hunting does through `build-resume`.
 _Avoid_: Pipeline, process, flow
 
 **Routing skill**:
@@ -61,6 +61,10 @@ _Avoid_: Backlog, queue, open items
 **Handoff contract**:
 The six-field block carrying context across a stage or session boundary: task goal, decisions, files changed, validation performed, remaining risks, next action.
 _Avoid_: Summary, status update, report
+
+**Fact base**:
+The confirmed claims a job-hunting document is allowed to draw from, held outside any one application as a master resume plus a bullet bank. Tailoring selects from it and never adds to it; new facts are written back only after being verified.
+_Avoid_: Source of truth, profile, resume data
 
 **Docs-checked trailer**:
 A commit trailer naming each document considered during a drift check and what was concluded about it. Usually the only record of that judgment that outlives the session.
