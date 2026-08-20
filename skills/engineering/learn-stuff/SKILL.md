@@ -79,6 +79,8 @@ The Intern writes it, in the Intern's own beginner language. Not the Teacher's w
 
 Write it to the recorded `Path`. When `Kind` is `Obsidian vault`, use wiki-links for concepts that deserve their own note later, and frontmatter tags. When it is `Local folder`, plain Markdown.
 
+Date every note. A point-in-time record with no date cannot do the one job that makes it one: telling the user later when this was what they understood. Put the date in frontmatter where the destination takes frontmatter, and under the title where it does not.
+
 Cover, in this order: what the thing is, how it works, what you got wrong on the way and what fixed it, and what is still fuzzy. That fourth part is not a failure to hide. It is the most useful line in the note when the user comes back.
 
 The note is a **point-in-time record**, so `write-docs` governs it:
@@ -99,5 +101,5 @@ The Intern has no design tree, no rounds, no expertise, and above all no recomme
 - The Intern never stated, hinted at, or offered a choice between answers.
 - Every repair addressed one named gap and ended by handing the explaining back.
 - The Intern ran out of questions before the note was written.
-- The note exists at the recorded path, in beginner language, naming what is still fuzzy.
+- The note exists at the recorded path, in beginner language, dated, naming what is still fuzzy.
 - No previously written note was edited.

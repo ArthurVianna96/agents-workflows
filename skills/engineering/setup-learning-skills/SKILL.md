@@ -46,7 +46,8 @@ Summarise what you found in a line or two, then ask exactly one question, leadin
 
 Pick the recommendation from what exploration found:
 
-- **One vault found**: propose that vault, naming a `lessons` subfolder inside it rather than its root, so session notes do not scatter through existing notes.
+- **One vault found, already holding unrelated notes**: propose a `lessons` subfolder inside it, so session notes do not scatter through what is already there.
+- **One vault found, empty or already dedicated to this**: propose its root. A vault named for lessons with nothing else in it does not need a subfolder, and adding one buys a level of nesting and nothing else.
 - **Several vaults found**: name them and ask which.
 - **No vault, but a lessons-style folder found**: propose that folder.
 - **Nothing found**: propose a local folder at `~/lessons-learned`.
