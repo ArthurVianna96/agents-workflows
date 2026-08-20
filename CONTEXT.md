@@ -11,11 +11,11 @@ A self-contained instruction package for one kind of work, at `skills/<category>
 _Avoid_: Prompt, template, command
 
 **Workflow**:
-An ordered set of stages for one kind of work, expressed as a routing skill plus a page under `workflows/<name>/`. The engineering loop is one; the learning loop is another.
+An ordered set of stages for one kind of work, expressed as a page under `workflows/<name>/` plus the skills that run its stages. The engineering loop is one; the learning loop is another. A workflow may enter through a routing skill, as engineering does through `plan-change`, or through a single skill, as learning does through `learn-stuff`.
 _Avoid_: Pipeline, process, flow
 
 **Routing skill**:
-A skill that triages a request and sequences other work rather than doing it. `plan-change` is one.
+A skill that triages a request and sequences other work rather than doing it. `plan-change` is one, and the only one. A workflow does not need one.
 _Avoid_: Orchestrator, controller, dispatcher
 
 **Adapter**:
