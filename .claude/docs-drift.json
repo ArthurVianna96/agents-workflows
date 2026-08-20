@@ -7,6 +7,7 @@
   ],
   "docs": [
     "README.md",
+    "CONTEXT.md",
     "CONTRIBUTING.md",
     "AGENTS.md",
     "docs/*.md",

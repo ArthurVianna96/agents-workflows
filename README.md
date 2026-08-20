@@ -6,17 +6,18 @@ Everything here is plain Markdown and intentionally small enough to adapt to the
 
 ## Workflows
 
-A workflow is an ordered set of stages for one kind of work, written as a routing skill plus a page. Skills are shared rather than owned: a workflow sequences them, it does not contain them, so `handoff` and `unslop` serve every workflow here.
+A workflow is an ordered set of stages for one kind of work, written as a page plus the skills that run its stages. Skills are shared rather than owned: a workflow sequences them, it does not contain them, so `handoff` and `unslop` serve every workflow here.
 
 | Workflow | What it is for |
 | --- | --- |
 | [Engineering](workflows/engineering/README.md) | Turning a change request into specified, sliced, verifiable work, and handing it off without losing context. |
+| [Learning](workflows/learning/README.md) | Studying a concept until you can explain it yourself, and leaving a note that proves it. |
 
 Open the one that matches the work in front of you. Each page carries its own loop, its own setup, and its own worked examples.
 
 ## Skills, agents, and hooks
 
-**Skills** are short, reusable instructions for a kind of work: framing, interviewing, domain modeling, specifying, ticketing, documenting, handing off, or editing prose. They describe a workflow stage and its expected output. They live under [skills/](skills/), grouped into `engineering`, `productivity`, and `miscellaneous`. [ADR-0002](docs/adr/0002-skills-are-organized-by-category.md) records why those groups exist and why no host ever sees them.
+**Skills** are short, reusable instructions for a kind of work: framing, interviewing, domain modeling, specifying, ticketing, teaching, documenting, handing off, or editing prose. They describe a workflow stage and its expected output. They live under [skills/](skills/), grouped into `engineering`, `productivity`, and `miscellaneous`. [ADR-0002](docs/adr/0002-skills-are-organized-by-category.md) records why those groups exist and why no host ever sees them.
 
 **Hooks** are host-specific adapters in [hooks/](hooks/). They are not portable, and the repository does not pretend otherwise. Each one wires a canonical skill into one coding agent's lifecycle and carries no rules the skill does not already state. [ADR-0001](docs/adr/0001-host-adapters-live-in-hooks.md) records why they sit outside `skills/`.
 
