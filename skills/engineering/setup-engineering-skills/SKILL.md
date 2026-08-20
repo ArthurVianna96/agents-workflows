@@ -26,6 +26,7 @@ Look at the current repo to understand its starting state. Read whatever exists;
 - `docs/agents/`: does this skill's prior output already exist?
 - `.scratch/`: a sign that a local-markdown issue tracker convention is already in use
 - Is the `triage` skill installed? (a `triage` skill folder alongside this one, or `triage` in your available skills.) This decides whether Section B runs at all.
+- If it is, the labels the tracker already carries: `gh label list`, `glab label list`, or the equivalent for whatever tracker Section A found. One listing answers Section B before it is asked. Look for labels already serving the five canonical roles under other names.
 - Monorepo signals: a `pnpm-workspace.yaml`, a `workspaces` field in `package.json`, or a populated `packages/*` with its own `src/`. These are present only in a genuinely large multi-package repo; their absence means single-context, which is almost every repo.
 
 ### 2. Present findings and ask
@@ -49,11 +50,14 @@ Record the choice in `docs/agents/issue-tracker.md`. The GitHub and GitLab templ
 
 **Section B: Triage label vocabulary.** Skip this section entirely if the `triage` skill isn't installed (exploration told you), since an uninstalled skill needs no labels.
 
-If it is installed, ask exactly one question:
+The defaults are the five canonical roles, each label string equal to its name: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`.
 
-> Do you want to keep the default triage labels? (recommended: **yes**)
+Recommend from what the tracker already carries, not from the defaults. Exploration told you which it is:
 
-The defaults are the five canonical roles, each label string equal to its name: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. On **yes**, write them as-is. Only if the user says no, usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`), collect the overrides so `triage` applies existing labels instead of creating duplicates.
+- **Nothing on the tracker serves any of the five roles**: propose the defaults and write them as-is.
+- **Something already serves a role under another name** (`bug:triage` for `needs-triage`, say): propose that existing label for that role and fill the remaining roles with defaults. `triage` then applies labels the tracker already has instead of creating near-duplicates beside them, which is the failure this section exists to avoid.
+
+Either way, ask once, showing the full five-row mapping you are proposing so the user can correct a single row in a word.
 
 **Section C: Domain docs.** Default to **single-context** (one `CONTEXT.md` + `docs/adr/` at the repo root). This fits almost every repo; write it without asking.
 
