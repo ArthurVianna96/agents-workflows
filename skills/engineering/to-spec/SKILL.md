@@ -7,7 +7,7 @@ description: Turn settled conversation and repository context into a specificati
 
 This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
 
-The issue tracker and triage label vocabulary should have been provided to you. If not, use the `setup-skills` skill before continuing.
+The issue tracker and triage label vocabulary should have been provided to you. If not, use the `setup-engineering-skills` skill before continuing.
 
 ## Process
 

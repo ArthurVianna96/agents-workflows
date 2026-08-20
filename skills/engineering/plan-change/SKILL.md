@@ -13,7 +13,7 @@ Run this in the conversation with the user. `grill-with-docs` interviews the use
 
 - The requested change and the user outcome behind it.
 - Repository conventions, current behavior, and constraints in the affected area.
-- The configured issue tracker and triage label vocabulary. If they have not been provided, use `setup-skills` before step 4.
+- The configured issue tracker and triage label vocabulary. If they have not been provided, use `setup-engineering-skills` before step 4.
 
 ## Workflow
 
@@ -42,7 +42,7 @@ Confirm every condition below before writing anything:
 - Durable decisions live in the glossary and decision records, not only in the conversation.
 - The issue tracker and triage vocabulary are configured.
 
-If a condition fails, name it and resolve it. Return to step 2 for an open design question; use `setup-skills` for missing tracker configuration.
+If a condition fails, name it and resolve it. Return to step 2 for an open design question; use `setup-engineering-skills` for missing tracker configuration.
 
 ### 4. Write the specification
 

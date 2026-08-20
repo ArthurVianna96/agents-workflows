@@ -55,7 +55,7 @@ The frontier is empty, so `to-spec` runs. It asks one thing before writing:
 
 > The existing create-task component test is the highest seam that already exists. Testing there rather than adding a new one. Does that match your expectation?
 
-Then it publishes an issue to whatever tracker `setup-skills` configured, labelled `ready-for-agent`:
+Then it publishes an issue to whatever tracker `setup-engineering-skills` configured, labelled `ready-for-agent`:
 
 ```text
 #41  Optional project label on tasks                    [ready-for-agent]

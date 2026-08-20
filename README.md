@@ -58,7 +58,7 @@ To add or revise any of them, use [create-skills](skills/miscellaneous/create-sk
 Once per repository:
 
 1. **Make the skills discoverable.** Copy or symlink the skill folders under [skills/](skills/) into your coding agent's project location, as described in [docs/portability.md](docs/portability.md). They are grouped into category directories here; the category is dropped on the way in, so `skills/engineering/handoff` installs as `handoff`. Manual use works too: open a `SKILL.md` and paste it alongside your task.
-2. **Run [setup-skills](skills/engineering/setup-skills/SKILL.md).** It records which issue tracker this repository uses, its triage labels, and where domain documents live. [to-spec](skills/engineering/to-spec/SKILL.md) and [to-tickets](skills/engineering/to-tickets/SKILL.md) both require that configuration, so skipping this stalls the loop at stage 2.
+2. **Run [setup-engineering-skills](skills/engineering/setup-engineering-skills/SKILL.md).** It records which issue tracker this repository uses, its triage labels, and where domain documents live. [to-spec](skills/engineering/to-spec/SKILL.md) and [to-tickets](skills/engineering/to-tickets/SKILL.md) both require that configuration, so skipping this stalls the loop at stage 2.
 
 Then, for each request:
 
