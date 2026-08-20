@@ -1,11 +1,11 @@
 ---
-name: setup-skills
-description: Configure a repository for the engineering skills by defining its issue tracker, triage labels, and domain-document layout. Use when setting up a repository before dependent planning and ticketing skills.
+name: setup-engineering-skills
+description: Configure a repository for the engineering workflow by defining its issue tracker, triage labels, and domain-document layout. Use when setting up a repository before its planning and ticketing skills can run.
 ---
 
-# Setup Skills
+# Setup Engineering Skills
 
-Scaffold the per-repo configuration that the engineering skills assume:
+Scaffold the per-repo configuration that the engineering workflow assumes:
 
 - **Issue tracker**: where issues live (GitHub by default; local markdown is also supported out of the box)
 - **Triage labels**: the strings used for the five canonical triage roles
